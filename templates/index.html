@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <title>Wordsmith</title>
+    <link rel="icon" href="static/images/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='assets/css/main.css') }}"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='assets/css/noscript.css') }}"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <div id="wrapper">
+      <header id="header" class="alt">
+        <span class="logo"
+          ><img
+            src="{{ url_for('static', filename='images/logo.svg') }}"
+            alt=""
+        /></span>
+        <h1>Wordsmith</h1>
+        <p>Summarize your text with ease.</p>
+      </header>
+
+      <nav id="nav">
+        <ul>
+          <li><a href="#input">Input Text</a></li>
+          <li><a href="#summary">Summary</a></li>
+          <li><a href="#about">About</a></li>
+          <!-- Add more navigation links as needed -->
+        </ul>
+      </nav>
+
+      <div id="main">
+        <section id="input" class="main special">
+          <header class="major">
+            <h2>Input Text</h2>
+          </header>
+          <div class="content">
+            <form method="post" action="{{ url_for('summarize') }}">
+              <textarea
+                name="inputText"
+                placeholder="Enter your text here..."
+                required="required"
+              ></textarea>
+              <!-- Add the range slider here -->
+              <label class="rangeTextHeading" for="summaryLength"
+                >Select Summary Length:</label
+              >
+              <input
+                type="range"
+                id="summaryLength"
+                name="summaryLength"
+                min="100"
+                max="500"
+                value="150"
+                step="50"
+                class="styled-slider"
+              />
+              <p class="rangeTextSelection">
+                Selected Summary Length: <span id="lengthOutput">100</span>
+              </p>
+              <ul class="actions special">
+                <li><button type="submit" class="button">Summarize</button></li>
+              </ul>
+            </form>
+          </div>
+          <script>
+            // Get the range slider and output element
+            const summaryLengthSlider =
+              document.getElementById("summaryLength");
+            const lengthOutput = document.getElementById("lengthOutput");
+
+            // Display the default value on page load
+            lengthOutput.textContent = summaryLengthSlider.value;
+
+            // Update the displayed value as the slider is moved
+            summaryLengthSlider.addEventListener("input", () => {
+              lengthOutput.textContent = summaryLengthSlider.value;
+            });
+          </script>
+        </section>
+
+        <section id="summary" class="main special">
+          <header class="major">
+            <h2>Summary</h2>
+          </header>
+          <div class="content">
+            <p id="summaryOutput">{{ summary }}</p>
+          </div>
+        </section>
+
+        <!-- Add more sections as needed -->
+      </div>
+
+      <footer id="footer">
+        <section>
+          <!-- Footer content goes here -->
+        </section>
+        <section>
+          <!-- Footer content goes here -->
+        </section>
+        <p class="copyright">
+          &copy; 2024 Wordsmith. All rights reserved. <a href=""></a>
+        </p>
+      </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.scrollex.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.scrolly.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/browser.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/breakpoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+  </body>
+</html>
