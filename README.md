@@ -14,9 +14,9 @@ User-Friendly Interface: The project offers a user-friendly interface, allowing 
 ## Prerequisites
 Before you begin, make sure you have the following installed:
 
-Python 3.x<br>
+Python 3.x: Download from https://www.python.org/<br>
 Git: If you don't have Git installed, you can download it from https://git-scm.com/.<br>
-Docker: (optional, for containerization)<br>
+Docker (optional, for containerization): Download from https://www.docker.com/<br>
 
 ## Installation
 
