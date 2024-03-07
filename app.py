@@ -19,7 +19,7 @@ def summarize():
 
 def perform_summarization(text):
     API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
-    headers = {"Authorization": "API_TOKEN"}  # Put your API TOKEN here
+    headers = {"Authorization": "Bearer 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"}
 
     data = req.form["inputText"]
     minL = 150
@@ -39,5 +39,5 @@ def perform_summarization(text):
     return output
 
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == "__main__":
+    app.run(port=5000, host="0.0.0.0")
